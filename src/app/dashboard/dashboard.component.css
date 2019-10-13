@@ -10,6 +10,74 @@ p.category {
     font-size: 15px !important;
 }
 
+.chart-atual .card-title {
+    margin-top: 33px;
+}
+
+.subtitles {
+    display: flex;
+}
+
+.subtitles .sub > div {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.subtitles .sub .red {
+    background-color: red;
+}
+
+.subtitles .sub .orange {
+    background-color: orange;
+}
+
+.subtitles .sub .red {
+    background-color: blue;
+}
+
+.pie-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.pie-content h4.card-title {
+    font-size: 20px;
+}
+
+ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.lista-de-lado {
+    list-style: none;
+}
+
+.lista-de-lado li {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+button.btn {
+    padding: 5px !important;
+}
+.pie-content>* {
+    margin: 0;
+}
+
+.pie-content>.card-title {
+    margin-top: 0;
+    font-size: 26px;
+}
+
+.pie-content mat-select {
+    width: 85px !important;
+}
+
 h3.card-title {
     font-size: 15px;
 }

@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Chart } from 'app/model/chart.model';
 import { DashContent } from 'app/model/dashContent.model';
+import { Item } from 'app/model/item.model';
 import { CenarioService } from 'app/service/cenario/cenario.service';
-import { ItemService } from 'app/service/item/item.service';
 import * as Chartist from 'chartist';
 import { TableData } from '../md/md-table/md-table.component';
-import { Item } from 'app/model/item.model';
-import { Chart } from 'app/model/chart.model';
 
 
 declare const $: any;
@@ -21,6 +20,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   dashContent: DashContent;
   itens: Item[] = [];
+
+  mes = 'Fevereiro';
 
   constructor(
     private cenarioService: CenarioService
@@ -85,9 +86,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   // constructor(private navbarTitleService: NavbarTitleService) { }
   public ngOnInit() {
     this.getDasContent();
+    this.buildPieChart();
 
     /* ----------==========     Daily Sales Chart initialization    ==========---------- */
   }
+
+  private buildPieChart() {
+    var data = {
+      series: [5, 3, 4]
+    };
+
+    var sum = function (a, b) { return a + b };
+
+    new Chartist.Pie('#mes-chart', data, {
+      labelInterpolationFnc: function (value) {
+        return Math.round(value / data.series.reduce(sum) * 100) + '%';
+      }
+    });
+  }
+
   ngAfterViewInit() {
     const breakCards = true;
     if (breakCards === true) {
@@ -167,7 +184,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       const dataWebsiteViewsChart = {
         labels: labels,
-        series: [series],
+        series: [series]
       };
       const optionsWebsiteViewsChart = {
         axisX: {

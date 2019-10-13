@@ -1,32 +1,93 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 card-item" *ngFor="let item of itens">
+            <div class="col-sm-3 card-item">
                 <div class="card card-stats">
                     <div class="card-header card-heard-title" data-background-color="orange">
-                        <i class="material-icons">weekend</i>
+                        <i class="material-icons">trending_up</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">{{item.name}}</p>
-                        <h3 class="card-title">{{item.value | currency: 'BRL'}}</h3>
+                        <p class="category">R.O.</p>
+                        <ul>
+                            <li>2018 x 2019 = R$ 300mil</li>
+                            <li>2016 x 2018 = - R$ 100mil</li>
+                            <li>2014 x 2017 = R$ 90mil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 card-item">
+                <div class="card card-stats">
+                    <div class="card-header card-heard-title" data-background-color="orange">
+                        <i class="material-icons">widgets</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Cenarios</p>
+                        <ul class="lista-de-lado">
+                            <li><a href="#">#1 Prever valores</a></li>
+                            <li><a href="#">#2 Prever valores</a></li>
+                            <li><a href="#">#3 Prever valores</a></li>
+                            <li><a href="#">#4 Prever valores</a></li>
+                        </ul>
+                        <button class="btn btn-success">Adicionar cenário</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 card-item">
+                <div class="card card-stats">
+                    <div class="card-header card-heard-title" data-background-color="orange">
+                        <i class="material-icons">trending_down</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Projetos R.C.</p>
+                        <ul class="lista-de-lado">
+                            <li>Automatizar testes <button class="btn btn-success">Aplicar</button></li>
+                            <li>Automatizar RH <button class="btn btn-success">Aplicar</button></li>
+                            <li>Tecnologias 4.0 <button class="btn btn-success">Aplicar</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 card-item">
+                <div class="card card-stats">
+                    <div class="card-header card-heard-title" data-background-color="orange">
+                        <i class="material-icons">timeline</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Receita corrente</p>
+                        <h6>{{2000000 | currency: 'BRL'}}</h6>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div>
-                <div class="card card-chart">
-                    <div class="card-header" data-background-color="red" data-header-animation="true">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Retornar!
-                            </button>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="card card-chart chart-atual">
+                        <div class="card-header" data-background-color="red" data-header-animation="true">
+                            <div class="ct-chart" id="websiteViewsChart"></div>
                         </div>
-                        <h4 class="card-title">Cenário referente à
-                            {{dashContent?.currentCenario.dateReference | date: 'yyyy'}}</h4>
+                        <div class="card-content">
+                            <div class="card-actions">
+                                <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+                                    <i class="material-icons">build</i> Retornar!
+                                </button>
+                            </div>
+                            <h4 class="card-title">Cenário atual
+                                ({{dashContent?.currentCenario.dateReference | date: 'yyyy'}})</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="ct-chart" id="mes-chart"></div>
+                        <div class="pie-content">
+                            <h4 class="card-title">Custos referentes à</h4>
+                            <mat-select [(ngModel)]="mes">
+                                <mat-option value="Fevereiro">Fevereiro</mat-option>
+                            </mat-select>
+                        </div>
                     </div>
                 </div>
 
@@ -34,20 +95,22 @@
                     Histórico
                 </h3>
 
-                <div class="card card-chart" *ngFor="let item of dashContent.historic; let i = index">
-                    <div class="card-header" data-background-color="red" data-header-animation="true">
-                        <div class="ct-chart" [id]="'websiteViewsChart' + i"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Retornar!
-                            </button>
+                <ng-container *ngIf="dashContent">
+                    <div class="card card-chart" *ngFor="let item of dashContent.historic; let i = index">
+                        <div class="card-header" data-background-color="red" data-header-animation="true">
+                            <div class="ct-chart" [id]="'websiteViewsChart' + i"></div>
                         </div>
-                        <h4 class="card-title">Cenário referente à
-                            {{item?.dateReference | date: 'yyyy'}}</h4>
+                        <div class="card-content">
+                            <div class="card-actions">
+                                <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+                                    <i class="material-icons">build</i> Retornar!
+                                </button>
+                            </div>
+                            <h4 class="card-title">Cenário referente à
+                                {{item?.dateReference | date: 'yyyy'}}</h4>
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
     </div>
