@@ -1,0 +1,7 @@
+*:not(i) {
+    font-family: 'Niramit', sans-serif !important;
+}
+
+a.simple-text {
+    letter-spacing: 3px;
+}
