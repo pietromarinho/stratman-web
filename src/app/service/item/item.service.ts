@@ -6,6 +6,7 @@ import { ErrorService } from '../toast-notification-service/error-service/error.
 import { Constant } from 'app/constant/constant';
 import { Item } from 'app/model/item.model';
 
+
 @Injectable()
 export class ItemService extends CrudService<Item> {
 

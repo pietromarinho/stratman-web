@@ -1,11 +1,12 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { TableData } from '../md/md-table/md-table.component';
-import { LegendItem, ChartType } from '../md/md-chart/md-chart.component';
-
-import * as Chartist from 'chartist';
-import { Item } from 'app/model/item.model';
-import { ItemService } from 'app/service/item/item.service';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { DashContent } from 'app/model/dashContent.model';
 import { CenarioService } from 'app/service/cenario/cenario.service';
+import { ItemService } from 'app/service/item/item.service';
+import * as Chartist from 'chartist';
+import { TableData } from '../md/md-table/md-table.component';
+import { Item } from 'app/model/item.model';
+import { Chart } from 'app/model/chart.model';
+
 
 declare const $: any;
 
@@ -18,13 +19,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   // constructor(private navbarTitleService: NavbarTitleService, private notificationService: NotificationService) { }
   public tableData: TableData;
 
+  dashContent: DashContent;
+  itens: Item[] = [];
+
   constructor(
-    private itemService: ItemService,
     private cenarioService: CenarioService
   ) {
   }
-
-  itens: Item[] = [null, null, null, null, null]
 
   startAnimationForLineChart(chart: any) {
     let seq: any, delays: any, durations: any;
@@ -83,7 +84,38 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
   // constructor(private navbarTitleService: NavbarTitleService) { }
   public ngOnInit() {
+    this.getDasContent();
+
     /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+  }
+  ngAfterViewInit() {
+    const breakCards = true;
+    if (breakCards === true) {
+      // We break the cards headers if there is too much stress on them :-)
+      $('[data-header-animation="true"]').each(function () {
+        const $fix_button = $(this);
+        const $card = $(this).parent('.card');
+        $card.find('.fix-broken-card').click(function () {
+          const $header = $(this).parent().parent().siblings('.card-header, .card-image');
+          $header.removeClass('hinge').addClass('fadeInDown');
+
+          $card.attr('data-count', 0);
+
+          setTimeout(function () {
+            $header.removeClass('fadeInDown animate');
+          }, 480);
+        });
+
+        $card.mouseenter(function () {
+          const $this = $(this);
+          const hover_count = parseInt($this.attr('data-count'), 10) + 1 || 0;
+          $this.attr('data-count', hover_count);
+          // if (hover_count >= 20) {
+          //   $(this).children('.card-header, .card-image').addClass('hinge animated');
+          // }
+        });
+      });
+    }
 
     const dataDailySalesChart = {
       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -129,63 +161,79 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.startAnimationForLineChart(completedTasksChart);
 
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-    const dataWebsiteViewsChart = {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-      series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-      ]
-    };
-    const optionsWebsiteViewsChart = {
-      axisX: {
-        showGrid: false
-      },
-      low: 0,
-      high: 1000,
-      chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-    };
-    const responsiveOptions: any = [
-      ['screen and (max-width: 640px)', {
-        seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
-    ];
-    const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
-
-    this.startAnimationForBarChart(websiteViewsChart);
   }
-  ngAfterViewInit() {
-    const breakCards = true;
-    if (breakCards === true) {
-      // We break the cards headers if there is too much stress on them :-)
-      $('[data-header-animation="true"]').each(function () {
-        const $fix_button = $(this);
-        const $card = $(this).parent('.card');
-        $card.find('.fix-broken-card').click(function () {
-          const $header = $(this).parent().parent().siblings('.card-header, .card-image');
-          $header.removeClass('hinge').addClass('fadeInDown');
 
-          $card.attr('data-count', 0);
-
-          setTimeout(function () {
-            $header.removeClass('fadeInDown animate');
-          }, 480);
-        });
-
-        $card.mouseenter(function () {
-          const $this = $(this);
-          const hover_count = parseInt($this.attr('data-count'), 10) + 1 || 0;
-          $this.attr('data-count', hover_count);
-          if (hover_count >= 20) {
-            $(this).children('.card-header, .card-image').addClass('hinge animated');
+  initChart(labels, series) {
+    setTimeout(() => {
+      const dataWebsiteViewsChart = {
+        labels: labels,
+        series: [series],
+      };
+      const optionsWebsiteViewsChart = {
+        axisX: {
+          showGrid: false
+        },
+        low: 0,
+        high: 21000,
+        // chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
+      };
+      const responsiveOptions: any = [
+        ['screen and (max-width: 640px)', {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value[0];
+            }
           }
-        });
+        }]
+      ];
+      const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+
+      this.startAnimationForBarChart(websiteViewsChart);
+    }, 100);
+  }
+
+  buildHistoric(element: Chart[]) {
+    setTimeout(() => {
+      for (let i = 0; i < element.length; i++) {
+
+        const dataWebsiteViewsChart = {
+          labels: element[i].labels,
+          series: [element[i].series],
+        };
+        const optionsWebsiteViewsChart = {
+          axisX: {
+            showGrid: false
+          },
+          low: 0,
+          high: 21000,
+          // chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
+        };
+        const responsiveOptions: any = [
+          ['screen and (max-width: 640px)', {
+            seriesBarDistance: 5,
+            axisX: {
+              labelInterpolationFnc: function (value) {
+                return value[0];
+              }
+            }
+          }]
+        ];
+        const websiteViewsChartHistoric = new Chartist.Bar('#websiteViewsChart' + i, dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+
+        this.startAnimationForBarChart(websiteViewsChartHistoric);
+      }
+    }, 100);
+  }
+
+  getDasContent() {
+    this.cenarioService.getDashContent().subscribe(
+      success => {
+        this.dashContent = success;
+        this.itens = this.dashContent.currentItens;
+        this.initChart(success.currentCenario.labels, success.currentCenario.series);
+        this.buildHistoric(success.historic);
+        console.log(success);
       });
-    }
   }
 }

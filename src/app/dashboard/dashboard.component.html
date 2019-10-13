@@ -3,218 +3,17 @@
         <div class="row">
             <div class="col-sm-3 card-item" *ngFor="let item of itens">
                 <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">weekend</i>
+                    </div>
                     <div class="card-content">
-                        <p class="category">Bookings</p>
-                        <h3 class="card-title">184</h3>
+                        <p class="category">{{item.name}}</p>
+                        <h3 class="card-title">{{item.value | currency: 'BRL'}}</h3>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/card-2.jpeg">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple"  matTooltip="View" [matTooltipPosition]="'below'">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple"  matTooltip="Edit" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove" [matTooltipPosition]="'below'">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Cozy 5 Stars Apartment</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Barceloneta Beach and bus stop just 2 min by walk and...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$899/night</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Barcelona, Spain</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/card-3.jpeg">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="View" [matTooltipPosition]="'below'">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" matTooltip="Edit" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove" [matTooltipPosition]="'below'">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Office Studio</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Metro Station and bus stop just 2 min by walk and near...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$1.119/night</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> London, UK</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/card-1.jpeg">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="View" [matTooltipPosition]="'below'">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" matTooltip="Edit" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove" [matTooltipPosition]="'below'">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Beautiful Castle</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Metro Station and bus stop just 2 min by walk and near...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$459/night</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Milan, Italy</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
-        <!-- <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-icon" data-background-color="red">
-                        <i class="material-icons">language</i>
-                    </div>
-                    <div class="card-content">
-                        <h4 class="card-title">Global Sales by Top Locations</h4>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <app-md-table
-                                  [data]="tableData">
-                              </app-md-table>
-                            </div>
-                            <div class="col-md-6 col-md-offset-1">
-                                <div id="worldMap" class="map"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="row">
-            <!-- <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header" data-background-color="green" data-header-animation="true">
-                        <div class="ct-chart" id="dailySalesChart"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-info btn-simple" matTooltip="Refresh"
-                                [matTooltipPosition]="'below'">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="Change Date"
-                                [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">Daily Sales</h4>
-                        <p class="category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today
-                            sales.</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> updated 4 minutes ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header" data-background-color="orange" data-header-animation="true">
-                        <div class="ct-chart" id="completedTasksChart"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-info btn-simple" matTooltip="Refresh"
-                                [matTooltipPosition]="'below'">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="Change Date"
-                                [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">Completed Tasks</h4>
-                        <p class="category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div>
                 <div class="card card-chart">
                     <div class="card-header" data-background-color="red" data-header-animation="true">
@@ -225,16 +24,24 @@
                             <button type="button" class="btn btn-danger btn-simple fix-broken-card">
                                 <i class="material-icons">build</i> Retornar!
                             </button>
-                            <!-- <button type="button" class="btn btn-info btn-simple" matTooltip="Refresh"
-                                [matTooltipPosition]="'below'">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="Change Date"
-                                [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button> -->
                         </div>
-                        <h4 class="card-title">Website Views</h4>
+                        <h4 class="card-title">{{dashContent?.currentCenario.name}}
+                            {{dashContent?.currentCenario.dateReference | date: 'dd/MM/yyyy'}}</h4>
+                    </div>
+                </div>
+
+                <div class="card card-chart" *ngFor="let item of dashContent.historic; let i = index">
+                    <div class="card-header" data-background-color="red" data-header-animation="true">
+                        <div class="ct-chart" [id]="'websiteViewsChart' + i"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-actions">
+                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+                                <i class="material-icons">build</i> Retornar!
+                            </button>
+                        </div>
+                        <h4 class="card-title">{{item?.name}}
+                            {{item?.dateReference | date: 'dd/MM/yyyy'}}</h4>
                     </div>
                 </div>
             </div>

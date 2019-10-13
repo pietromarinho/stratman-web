@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdModule } from '../md/md.module';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../app.module';
-
+import { MdModule } from '../md/md.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+
 
 @NgModule({
     imports: [
@@ -14,9 +14,9 @@ import { DashboardRoutes } from './dashboard.routing';
         RouterModule.forChild(DashboardRoutes),
         FormsModule,
         MdModule,
-        MaterialModule
+        MaterialModule,
     ],
     declarations: [DashboardComponent]
 })
 
-export class DashboardModule {}
+export class DashboardModule { }
