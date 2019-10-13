@@ -1,7 +1,6 @@
-import { Component, OnInit, Renderer, ViewChild, ElementRef, Directive } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, ElementRef, OnInit, Renderer, ViewChild } from '@angular/core';
 import { ROUTES } from '../.././sidebar/sidebar.component';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 const misc: any = {
     navbar_menu_visible: 0,
     active_collapse: true,
@@ -11,6 +10,7 @@ const misc: any = {
 declare var $: any;
 @Component({
     selector: 'app-navbar-cmp',
+    styleUrls: ['navbar.component.css'],
     templateUrl: 'navbar.component.html'
 })
 
@@ -40,13 +40,13 @@ export class NavbarComponent implements OnInit {
         if ($('body').hasClass('hide-sidebar')) {
             misc.hide_sidebar_active = true;
         }
-        $('#minimizeSidebar').click(function() {
+        $('#minimizeSidebar').click(function () {
             if (misc.sidebar_mini_active === true) {
                 $('body').removeClass('sidebar-mini');
                 misc.sidebar_mini_active = false;
 
             } else {
-                setTimeout(function() {
+                setTimeout(function () {
                     $('body').addClass('sidebar-mini');
 
                     misc.sidebar_mini_active = true;
@@ -54,18 +54,18 @@ export class NavbarComponent implements OnInit {
             }
 
             // we simulate the window Resize so the charts will get updated in realtime.
-            const simulateWindowResize = setInterval(function() {
+            const simulateWindowResize = setInterval(function () {
                 window.dispatchEvent(new Event('resize'));
             }, 180);
 
             // we stop the simulation of Window Resize after the animations are completed
-            setTimeout(function() {
+            setTimeout(function () {
                 clearInterval(simulateWindowResize);
             }, 1000);
         });
-        $('#hideSidebar').click(function() {
+        $('#hideSidebar').click(function () {
             if (misc.hide_sidebar_active === true) {
-                setTimeout(function() {
+                setTimeout(function () {
                     $('body').removeClass('hide-sidebar');
                     misc.hide_sidebar_active = false;
                 }, 300);
@@ -75,7 +75,7 @@ export class NavbarComponent implements OnInit {
                 $('.sidebar').addClass('animation');
 
             } else {
-                setTimeout(function() {
+                setTimeout(function () {
                     $('body').addClass('hide-sidebar');
                     // $('.sidebar').addClass('animation');
                     misc.hide_sidebar_active = true;
@@ -83,26 +83,26 @@ export class NavbarComponent implements OnInit {
             }
 
             // we simulate the window Resize so the charts will get updated in realtime.
-            const simulateWindowResize = setInterval(function() {
+            const simulateWindowResize = setInterval(function () {
                 window.dispatchEvent(new Event('resize'));
             }, 180);
 
             // we stop the simulation of Window Resize after the animations are completed
-            setTimeout(function() {
+            setTimeout(function () {
                 clearInterval(simulateWindowResize);
             }, 1000);
         });
     }
     onResize(event) {
-      if ($(window).width() > 991) {
-        return false;
-      }
-      return true;
+        if ($(window).width() > 991) {
+            return false;
+        }
+        return true;
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];
-        setTimeout(function(){
+        setTimeout(function () {
             toggleButton.classList.add('toggled');
         }, 500);
         body.classList.add('nav-open');
