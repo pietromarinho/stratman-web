@@ -1,5 +1,5 @@
 .card-item {
-    width: auto;
+    /* width: auto; */
 }
 
 .card-item p {
@@ -18,7 +18,14 @@ h3.card-title {
     padding: 0 5px;
 }
 
-.card-header {
+.card-header.card-heard-title {
     padding: 5px;
-    margin: -20px 55px 5px;
+    margin: -20px 39% 5px;
+}
+
+.card-header i {
+    font-size: 36px;
+    line-height: 48px;
+    width: 40px;
+    height: 50px;
 }

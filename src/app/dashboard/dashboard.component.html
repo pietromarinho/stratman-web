@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-3 card-item" *ngFor="let item of itens">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="orange">
+                    <div class="card-header card-heard-title" data-background-color="orange">
                         <i class="material-icons">weekend</i>
                     </div>
                     <div class="card-content">
@@ -25,10 +25,14 @@
                                 <i class="material-icons">build</i> Retornar!
                             </button>
                         </div>
-                        <h4 class="card-title">{{dashContent?.currentCenario.name}}
-                            {{dashContent?.currentCenario.dateReference | date: 'dd/MM/yyyy'}}</h4>
+                        <h4 class="card-title">Cenário referente à
+                            {{dashContent?.currentCenario.dateReference | date: 'yyyy'}}</h4>
                     </div>
                 </div>
+
+                <h3>
+                    Histórico
+                </h3>
 
                 <div class="card card-chart" *ngFor="let item of dashContent.historic; let i = index">
                     <div class="card-header" data-background-color="red" data-header-animation="true">
@@ -40,8 +44,8 @@
                                 <i class="material-icons">build</i> Retornar!
                             </button>
                         </div>
-                        <h4 class="card-title">{{item?.name}}
-                            {{item?.dateReference | date: 'dd/MM/yyyy'}}</h4>
+                        <h4 class="card-title">Cenário referente à
+                            {{item?.dateReference | date: 'yyyy'}}</h4>
                     </div>
                 </div>
             </div>
