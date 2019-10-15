@@ -91,11 +91,11 @@
                     </div>
                 </div>
 
-                <h3>
-                    Histórico
-                </h3>
-
                 <ng-container *ngIf="dashContent">
+                    <h3>
+                        Histórico
+                    </h3>
+                        
                     <div class="card card-chart" *ngFor="let item of dashContent.historic; let i = index">
                         <div class="card-header" data-background-color="red" data-header-animation="true">
                             <div class="ct-chart" [id]="'websiteViewsChart' + i"></div>
