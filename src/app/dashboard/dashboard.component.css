@@ -6,8 +6,77 @@
     padding: 0 10px;
 }
 
+#rolist button {
+    background-color: transparent;
+    color: #00bcd4;
+    box-shadow: none;
+}
+
+.subs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.subs .sub {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.subs .sub .circle {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+
+.circle.red {
+    background-color: #f4433b;
+}
+
+.circle.blue {
+    background-color: #19bcd5;
+}
+
+.circle.orange {
+    background-color: #fe9a3c;
+}
+
+.d-l {
+    padding: 28px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+#rd-list {
+    width: 200px;
+    display: block;
+    margin: 0 auto !important;
+}
+
+#rolist {
+    width: 195px;
+    display: block;
+    margin: 0 auto !important;
+}
+
+.left-list li {
+    text-align: left;
+}
+
 p.category {
     font-size: 15px !important;
+}
+
+.green-text {
+    color: #4caf50;
+}
+
+.red-text {
+    color: red;
 }
 
 .chart-atual .card-title {
@@ -18,7 +87,7 @@ p.category {
     display: flex;
 }
 
-.subtitles .sub > div {
+.subtitles .sub>div {
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -37,11 +106,9 @@ p.category {
 }
 
 .pie-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 10px;
 }
+
 .pie-content h4.card-title {
     font-size: 20px;
 }
@@ -65,6 +132,7 @@ ul {
 button.btn {
     padding: 5px !important;
 }
+
 .pie-content>* {
     margin: 0;
 }

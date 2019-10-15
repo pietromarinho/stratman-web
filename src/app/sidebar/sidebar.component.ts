@@ -21,12 +21,43 @@ export interface ChildrenItems {
 }
 
 //Menu Items
-export const ROUTES: RouteInfo[] = [{
-    path: '/dashboard',
-    title: 'Dashboard',
-    type: 'link',
-    icontype: 'dashboard'
-},
+export const ROUTES: RouteInfo[] = [
+    {
+        path: '/dashboard',
+        title: 'Dashboard',
+        type: 'link',
+        icontype: 'dashboard'
+    },
+    {
+        path: '/#',
+        title: 'Simular cenários',
+        type: 'link',
+        icontype: 'blur_on'
+    },
+    {
+        path: '/#',
+        title: 'Analizar modelos',
+        type: 'link',
+        icontype: 'border_all'
+    },
+    {
+        path: '/#',
+        title: 'Manipular layouts',
+        type: 'link',
+        icontype: 'category'
+    },
+    {
+        path: '/#',
+        title: 'Históricos',
+        type: 'link',
+        icontype: 'folder'
+    },
+    {
+        path: '/#',
+        title: 'Parametrizar valores',
+        type: 'link',
+        icontype: 'tune'
+    }
 ];
 @Component({
     selector: 'app-sidebar-cmp',

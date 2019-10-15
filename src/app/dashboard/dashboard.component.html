@@ -7,11 +7,23 @@
                         <i class="material-icons">trending_up</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">R.O.</p>
-                        <ul>
-                            <li>2018 x 2019 = R$ 300mil</li>
-                            <li>2016 x 2018 = - R$ 100mil</li>
-                            <li>2014 x 2017 = R$ 90mil</li>
+                        <p class="category">Resultados operacionais</p>
+                        <ul class="left-list" id="rolist">
+                            <li>2016 x 2017 = <strong class="green-text">R$ 300mil</strong>
+                                <button class="btn btn-info"><i class="material-icons">
+                                        search
+                                    </i></button>
+                            </li>
+                            <li>2017 x 2018 = <strong class="red-text">-R$ 20mil</strong>
+                                <button class="btn btn-info"><i class="material-icons">
+                                        search
+                                    </i></button>
+                            </li>
+                            <li>2018 x 2019 = <strong class="green-text">R$ 90mil</strong>
+                                <button class="btn btn-info"><i class="material-icons">
+                                        search
+                                    </i></button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -24,12 +36,15 @@
                     <div class="card-content">
                         <p class="category">Cenarios</p>
                         <ul class="lista-de-lado">
-                            <li><a href="#">#1 Prever valores</a></li>
-                            <li><a href="#">#2 Prever valores</a></li>
-                            <li><a href="#">#3 Prever valores</a></li>
-                            <li><a href="#">#4 Prever valores</a></li>
+                            <li><a href="#">#1 Alta eficiência</a></li>
+                            <li><a href="#">#2 Baixos setups</a></li>
+                            <li><a href="#">#3 Baixa demanda</a></li>
+                            <li><a href="#">#4 Cenário atual</a></li>
                         </ul>
-                        <button class="btn btn-success">Adicionar cenário</button>
+                        <div class="centralizado">
+                            <button class="btn btn-info">Adicionar cenário</button>
+                            <button class="btn btn-success">Simular resultados</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +55,7 @@
                     </div>
                     <div class="card-content">
                         <p class="category">Projetos R.C.</p>
-                        <ul class="lista-de-lado">
+                        <ul class="lista-de-lado" id="rd-list">
                             <li>Automatizar testes <button class="btn btn-success">Aplicar</button></li>
                             <li>Automatizar RH <button class="btn btn-success">Aplicar</button></li>
                             <li>Tecnologias 4.0 <button class="btn btn-success">Aplicar</button></li>
@@ -51,11 +66,13 @@
             <div class="col-sm-3 card-item">
                 <div class="card card-stats">
                     <div class="card-header card-heard-title" data-background-color="orange">
-                        <i class="material-icons">timeline</i>
+                        <i class="material-icons">attach_money</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">Receita corrente</p>
-                        <h6>{{2000000 | currency: 'BRL'}}</h6>
+                        <p class="category">Downline Geral</p>
+                        <h2 class="red-text center d-l">{{ 30000 | currency: 'BRL'}}
+                            <i class="material-icons">arrow_downward</i>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -74,19 +91,32 @@
                                 </button>
                             </div>
                             <h4 class="card-title">Cenário atual
-                                ({{dashContent?.currentCenario.dateReference | date: 'yyyy'}})</h4>
+                                (Valor x Setor)</h4>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <div class="card">
-                        <div class="ct-chart" id="mes-chart"></div>
+                        <div class="ct-chart" id="ro-chart"></div>
                         <div class="pie-content">
-                            <h4 class="card-title">Custos referentes à</h4>
-                            <mat-select [(ngModel)]="mes">
-                                <mat-option value="Fevereiro">Fevereiro</mat-option>
-                            </mat-select>
+                            <h4 class="card-title">Resultados de eficiência</h4>
+                            <div class="subs">
+                                <div class="sub">
+                                    <div class="circle red"></div>
+                                    Testes
+                                </div>
+                                |
+                                <div class="sub">
+                                    <div class="circle blue"></div>
+                                    Produção
+                                </div>
+                                |
+                                <div class="sub">
+                                    <div class="circle orange"></div>
+                                    OBA
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -95,7 +125,7 @@
                     <h3>
                         Histórico
                     </h3>
-                        
+
                     <div class="card card-chart" *ngFor="let item of dashContent.historic; let i = index">
                         <div class="card-header" data-background-color="red" data-header-animation="true">
                             <div class="ct-chart" [id]="'websiteViewsChart' + i"></div>

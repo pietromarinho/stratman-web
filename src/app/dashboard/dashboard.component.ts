@@ -86,22 +86,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   // constructor(private navbarTitleService: NavbarTitleService) { }
   public ngOnInit() {
     this.getDasContent();
-    this.buildPieChart();
+    this.buildLineChart();
 
     /* ----------==========     Daily Sales Chart initialization    ==========---------- */
   }
 
-  private buildPieChart() {
-    var data = {
-      series: [5, 3, 4]
-    };
-
-    var sum = function (a, b) { return a + b };
-
-    new Chartist.Pie('#mes-chart', data, {
-      labelInterpolationFnc: function (value) {
-        return Math.round(value / data.series.reduce(sum) * 100) + '%';
-      }
+  private buildLineChart() {
+    var chart = new Chartist.Line('#ro-chart', {
+      labels: ['10h', '12h', '14h', '16h', '18h'],
+      series: [
+        [12, 9, 7, 8, 5],
+        [2, 1, 3.5, 7, 3],
+        [1, 3, 4, 5, 6]
+      ]
+    }, {
+      lineSmooth: Chartist.Interpolation.cardinal({
+        tension: 0.2
+      })
     });
   }
 
